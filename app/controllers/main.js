@@ -19,9 +19,29 @@ $(document).ready(function () {
         getInput("Thêm người dùng","Thêm", "btnThem");
     })
 
+    //thử git
+    //DOM tới để lấy data
+    //b2: copy "data-taikhoan="${item.TaiKhoan}"" lên nút Sửa trong hàm taoBang
     $("body").delegate("#btnSua", "click", function () {
         getInput("Sửa người dùng","Cập nhật", "btnCapNhat");
+
+
+        //b3: lấy tài lhoản
+        var taiKhoan = $(this).data('taikhoan');
+
+        var nguoiDung = nguoiDungService.layThongTinNguoiDung(taiKhoan);
+        console.log(nguoiDung);
+        
+        //DOM tới các field data
+        $("#TaiKhoan").val(taiKhoan);
+        $("#HoTen").val(nguoiDung.HoTen);
+        $("#MatKhau").val(nguoiDung.MatKhau);
+        $("#Email").val(nguoiDung.Email);
+        $("#SoDienThoai").val(nguoiDung.SoDT);
+        $("#LoaiNguoiDung").val(nguoiDung.MaLoaiNguoiDung);
     })
+
+    
 
     $("body").delegate("#btnThem", "click", function(){
         var taiKhoan = $("#TaiKhoan").val();
@@ -78,7 +98,7 @@ $(document).ready(function () {
             <td>${item.SoDT}</td>
             <td>${item.TenLoaiNguoiDung}</td>
             <td>
-                <button id="btnSua" class="btn btn-success" data-toggle="modal" data-target="#myModal" >Sửa</button>
+                <button id="btnSua" class="btn btn-success" data-toggle="modal" data-target="#myModal" data-taikhoan="${item.TaiKhoan}" >Sửa</button>
                 <button id="btnXoa" class="btn btn-danger btnXoa" data-taikhoan="${item.TaiKhoan}">Xoá</button>
             </td>
         </tr>
