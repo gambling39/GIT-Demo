@@ -19,7 +19,7 @@ $(document).ready(function () {
         getInput("Thêm người dùng","Thêm", "btnThem");
     })
 
-    //thử git
+    //thử git, thử tạo branch
     //DOM tới để lấy data
     //b2: copy "data-taikhoan="${item.TaiKhoan}"" lên nút Sửa trong hàm taoBang
     $("body").delegate("#btnSua", "click", function () {
